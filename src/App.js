@@ -13,7 +13,7 @@ function App() {
       "opblock-summary"
     );
     methodElements.current = [...elementsWithTag, ...elementsWithSummary];
-    //console.log("hi", methodElements.current);
+
 
     Array.from(methodElements.current).forEach((element) => {
       const checkbox = document.createElement("input");
