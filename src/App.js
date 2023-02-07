@@ -13,23 +13,22 @@ function App() {
       "opblock-summary"
     );
     methodElements.current = [...elementsWithTag, ...elementsWithSummary];
-    console.log("hi", methodElements.current);
+    //console.log("hi", methodElements.current);
+
     Array.from(methodElements.current).forEach((element) => {
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
       checkbox.style.marginRight = "10px";
 
+      if (element.classList[0] === "opblock-summary" && (!element.firstChild || element.firstChild.nodeName !== "INPUT")) {
 
-      if (!element.firstChild || element.firstChild.nodeName !== "INPUT") {
-
-
-        if (element.className === "opblock-tag") {
-          element.insertAdjacentElement("beforebegin", checkbox)
-        }
-        else
-        
-          element.insertBefore(checkbox, element.firstChild);
+        element.insertBefore(checkbox, element.firstChild);
       }
+
+      else if (element.classList[0] === "opblock-tag" && (!element.previousSibling || element.previousSibling.nodeName !== "INPUT")) {
+        element.insertAdjacentElement("beforebegin", checkbox)
+      }
+
     });
   };
 
